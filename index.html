@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Visual Timer &amp; Routine Reminder</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <!-- TIMER DISPLAY (child view) -->
+  <section id="timerView" class="card" aria-live="polite">
+    <div id="reminderIcon" class="icon">🪥</div>
+    <h1 id="reminderText">Time to brush teeth</h1>
+    <svg id="pie" viewBox="0 0 100 100" role="img" aria-label="Time remaining">
+      <circle cx="50" cy="50" r="48" class="pie-bg"/>
+      <circle id="pieFill" cx="50" cy="50" r="25" class="pie-fill"/>
+    </svg>
+    <div id="clock">05:00</div>
+    <div id="status">Ready</div>
+    <div class="controls">
+      <button id="startBtn" class="big go">▶ Start</button>
+      <button id="pauseBtn" class="big pause" hidden>⏸ Pause</button>
+      <button id="resetBtn" class="big reset">↺ Reset</button>
+    </div>
+  </section>
+
+  <!-- CAREGIVER SETUP -->
+  <section id="setupView" class="card">
+    <h2>Caregiver Setup</h2>
+
+    <label for="textInput">Reminder text</label>
+    <input id="textInput" type="text" maxlength="40" value="Time to brush teeth">
+
+    <label>Icon</label>
+    <div id="iconPicker" class="icons"></div>
+
+    <div class="row">
+      <div><label for="minInput">Minutes</label>
+        <input id="minInput" type="number" min="1" max="120" value="5"></div>
+      <div><label for="warnInput">Warning (sec left)</label>
+        <input id="warnInput" type="number" min="5" max="600" value="60"></div>
+    </div>
+
+    <label class="check"><input id="soundToggle" type="checkbox" checked> Sound cues on</label>
+
+    <div class="controls">
+      <button id="applyBtn" class="big go">✔ Set Timer</button>
+      <button id="saveBtn" class="big alt">★ Save Preset</button>
+    </div>
+    <p id="msg" role="alert"></p>
+
+    <h3>Saved Presets</h3>
+    <ul id="presetList"></ul>
+
+    <details>
+      <summary>Research Log (usability testing)</summary>
+      <table id="logTable"><thead><tr><th>#</th><th>Setup time (s)</th><th>Errors</th></tr></thead><tbody></tbody></table>
+      <button id="csvBtn" class="small">Download CSV</button>
+      <button id="clearLogBtn" class="small">Clear log</button>
+    </details>
+  </section>
+</main>
+<script src="script.js"></script>
+</body>
+</html>
